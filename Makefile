@@ -17,6 +17,7 @@ compile_linux:
 run: 
 	@make clean
 	@npm run tailwind
+	@npm run parcel
 	@templ generate
 	@make compile
 	./bin/app

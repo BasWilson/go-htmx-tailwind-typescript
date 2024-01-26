@@ -60,3 +60,7 @@ And then add the following to your settings.json:
 
 ## Caching in development
 During development, open your network tab in your browser and disable caching. This will make sure that you always get the latest version of your files.
+
+## Todo
+- [ ] Add a production build step
+- [ ] Add a production Dockerfile
