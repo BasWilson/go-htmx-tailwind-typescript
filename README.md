@@ -38,7 +38,7 @@ make dev
 ```
 
 ## Structure
-The Go code is in the `app` folder. The frontend typescript is in the `app/ts` folder. The templ files are in the `app/templ` folder. The compiled typescript file is in the `public/js` folder.
+The Go code is in the `app` folder. The frontend typescript is in the `app/ts` folder. The templ files are in the `app/templ` folder. The compiled/bundled frontend code is in the `public/out` folder.
 
 You can just install packages from NPM and use them in your typescript code (`app/ts`). Parcel will bundle them automatically.
 
