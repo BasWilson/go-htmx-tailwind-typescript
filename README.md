@@ -21,6 +21,11 @@ I made this template because I wanted to have a web app that is easy to develop 
 - NodeJS (for tailwind and typescript)
 - NPM (for tailwind and typescript)
 
+To quickly install dependencies (except for npm and node), run:
+```bash
+make install_deps
+```
+
 To add WGO and templ to your PATH, run the following command:
 ```bash
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -28,11 +33,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 (I recommend adding this to your .bashrc or .zshrc)
 
 ## How to run
-1. Install dependencies
-```bash
-make install_deps
-```
-2. Run the dev server
 ```bash
 make dev
 ```
