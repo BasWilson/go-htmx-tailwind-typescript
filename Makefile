@@ -6,13 +6,13 @@ compile:
 	@make clean
 	@templ generate
 	mkdir ./bin
-	go build -o ./bin ./cmd/...
+	go build -o ./bin ./app
 
 compile_linux: 
 	@make clean
 	@templ generate
 	mkdir ./bin
-	GOARCH=amd64 GOOS=linux go build -o ./bin ./cmd/...
+	GOARCH=amd64 GOOS=linux go build -o ./bin ./app
 
 run: 
 	@make clean
