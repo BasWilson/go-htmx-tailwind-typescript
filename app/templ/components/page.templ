@@ -1,0 +1,14 @@
+package components
+
+templ Page(title string) {
+	<html>
+		<head>
+			<script src="/js/main.js"></script>
+			<link rel="stylesheet" href="/css/output.css"/>
+			<title>{ title }</title>
+		</head>
+		<body>
+			{ children... }
+		</body>
+	</html>
+}

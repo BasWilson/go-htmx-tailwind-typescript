@@ -1,0 +1,21 @@
+{
+  "name": "go-htmx-tailwind-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./public/css/index.css -o ./public/css/output.css",
+    "parcel": "parcel build cmd/app/js/main.ts --no-source-maps --dist-dir ./public/js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "htmx.org": "^1.9.10"
+  },
+  "targets": {
+    "main": false
+  }
+}
