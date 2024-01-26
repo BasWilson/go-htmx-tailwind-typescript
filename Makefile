@@ -27,6 +27,6 @@ install_deps:
 	@npm install
 
 dev:
-	@wgo -file=.go -file=.templ -file=.js -file=.ts -xdir=public -xfile=_templ.go templ generate :: npm run tailwind :: npm run parcel :: go run cmd/app/main.go
+	@wgo -file=.go -file=.templ -file=.js -file=.ts -xdir=public -xfile=_templ.go templ generate :: npm run tailwind :: npm run parcel :: go run app/main.go
 
 

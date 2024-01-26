@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/components"
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/pages"
+	"github.com/baswilson/go-htmx-tailwind-typescript/app/templ/components"
+	"github.com/baswilson/go-htmx-tailwind-typescript/app/templ/pages"
 	"github.com/baswilson/go-htmx-tailwind-typescript/app/utils"
 	"github.com/labstack/echo"
 )
