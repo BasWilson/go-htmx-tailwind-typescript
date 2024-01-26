@@ -64,3 +64,4 @@ During development, open your network tab in your browser and disable caching. T
 ## Todo
 - [ ] Add a production build step
 - [ ] Add a production Dockerfile
+- [ ] Split frontend and backend hot reload from each other
