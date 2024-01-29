@@ -1,0 +1,11 @@
+package components
+
+type Props struct {
+	Label string
+	Id    string
+	Class string
+}
+
+templ Button(props Props) {
+	<button id={ props.Id } class="px-4 bg-red-300 text-black rounded-sm py-2">{ props.Label }</button>
+}
