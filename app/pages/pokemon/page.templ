@@ -1,0 +1,43 @@
+package pages
+
+import "github.com/baswilson/go-htmx-tailwind-typescript/app/templ/components"
+import "github.com/baswilson/go-htmx-tailwind-typescript/app/types"
+import "github.com/baswilson/go-htmx-tailwind-typescript/app/utils"
+import "github.com/labstack/echo/v4"
+
+templ Pokemon(pokemon []types.Pokemon) {
+	@components.Page("Pokemon") {
+		<h1 class="text-3xl">Pokemon list</h1>
+		<div class="grid grid-cols-3 gap-3">
+			for _, p := range pokemon {
+				<div class="bg-gray-200 p-3 rounded-lg">
+					<h2 class="text-xl text-gray-700">{ p.Name }</h2>
+					<img src={ p.Sprites.FrontDefault }/>
+					<a href={ templ.SafeURL("/pokemon/" + p.Name) }>
+						@components.Button(components.Props{
+							Label: "Details",
+						})
+					</a>
+				</div>
+			}
+		</div>
+	}
+}
+
+func GetProps(c echo.Context) types.PageProps {
+	pokemonName := c.Param("name")
+	var result types.Pokemon
+	err := utils.Get("https://pokeapi.co/api/v2/pokemon/"+pokemonName, &result)
+
+	if err != nil {
+		return types.PageProps{
+			Error: err,
+			Props: nil,
+		}
+	}
+
+	return types.PageProps{
+		Error: nil,
+		Props: result,
+	}
+}
