@@ -1,8 +1,7 @@
-package routers
+package framework
 
 import (
 	"github.com/a-h/templ"
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/framework"
 	"github.com/baswilson/go-htmx-tailwind-typescript/app/templ/components"
 	"github.com/baswilson/go-htmx-tailwind-typescript/app/templ/pages"
 	"github.com/baswilson/go-htmx-tailwind-typescript/app/types"
@@ -15,9 +14,11 @@ var Globals = map[string]interface{}{
 }
 
 func Templates(e *echo.Echo) {
-	e.GET("/", func(c echo.Context) error { return utils.Rt(c, pages.Index()) })
+	RegisterStaticComponent(e, "/", func(c echo.Context) templ.Component {
+		return pages.Index()
+	}, 60) // will revalidate after 60 seconds
 
-	framework.RegisterStaticComponent(e, "/pokemon", func(c echo.Context) templ.Component {
+	RegisterStaticComponent(e, "/pokemon", func(c echo.Context) templ.Component {
 		var result types.PokemonList
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon", &result)
 
@@ -26,9 +27,9 @@ func Templates(e *echo.Echo) {
 		}
 
 		return pages.Pokemon(result.Results)
-	}, -1)
+	}, -1) // -1 means never revalidate
 
-	framework.RegisterStaticComponent(e, "/pokemon/:name", func(c echo.Context) templ.Component {
+	RegisterStaticComponent(e, "/pokemon/:name", func(c echo.Context) templ.Component {
 		var result types.Pokemon
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon/"+c.Param("name"), &result)
 
@@ -37,10 +38,10 @@ func Templates(e *echo.Echo) {
 		}
 
 		return pages.PokemonSlug(result)
-	}, -1)
+	}, -1) // -1 means never revalidate
 
-	e.POST("/clicked", func(c echo.Context) error {
+	RegisterStaticComponent(e, "/clicked", func(c echo.Context) templ.Component {
 		Globals["Clicked"] = Globals["Clicked"].(int) + 1
-		return utils.Rt(c, components.Clicked(Globals["Clicked"].(int)))
-	})
+		return components.Clicked(Globals["Clicked"].(int))
+	}, 0) // 0 means revalidate on every request
 }

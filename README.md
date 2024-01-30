@@ -67,3 +67,4 @@ During development, open your network tab in your browser and disable caching. T
 - [ ] Improve hot reloading
 - [ ] Write documentation how to use static wrapping
 - [ ] Write documentation how to deploy to edge workers
+- [ ] Codegen for stuff like routes

@@ -1,4 +1,4 @@
-package routers
+package framework
 
 import (
 	"github.com/labstack/echo"
