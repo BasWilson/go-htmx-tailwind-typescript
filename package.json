@@ -4,12 +4,12 @@
   "description": "",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./public/css/index.css -o ./public/out/output.css",
-    "parcel": "parcel build app/ts/main.ts --no-source-maps --dist-dir ./public/out"
+    "esbuild": "./node_modules/.bin/esbuild app/ts/main.ts --bundle --outfile=public/out/main.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.11.0",
+    "esbuild": "0.20.0",
     "tailwindcss": "^3.4.1"
   },
   "dependencies": {

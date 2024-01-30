@@ -5,7 +5,7 @@ This is a template for a web app using the following technologies:
 - [Tailwind](https://tailwindcss.com/) (CSS framework)
 - [HTMX](https://htmx.org/) (for making the frontend dynamic)
 - [Typescript](https://www.typescriptlang.org/) (for having a better dev experience)
-- [Parcel](https://parceljs.org/) (for bundling the frontend code)
+- [esbuild](https://esbuild.github.io/) (for bundling the frontend code)
 
 I made this template because I wanted to have a web app that is easy to develop and that is fast. I also wanted to have a web app that is easy to deploy. This template is meant as a starting point to use these technologies together.
 
@@ -40,7 +40,7 @@ make dev
 ## Structure
 The Go code is in the `app` folder. The frontend typescript is in the `app/ts` folder. The templ files are in the `app/templ` folder. The compiled/bundled frontend code is in the `public/out` folder.
 
-You can just install packages from NPM and use them in your typescript code (`app/ts`). Parcel will bundle them automatically.
+You can just install packages from NPM and use them in your typescript code (`app/ts`). esbuild will bundle them automatically.
 
 ## Important for VSCode
 For a better dev experience, install the following extensions:
