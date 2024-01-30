@@ -64,4 +64,6 @@ During development, open your network tab in your browser and disable caching. T
 ## Todo
 - [ ] Add a production build step
 - [ ] Add a production Dockerfile
-- [ ] Split frontend and backend hot reload from each other
+- [ ] Improve hot reloading
+- [ ] Write documentation how to use static wrapping
+- [ ] Write documentation how to deploy to edge workers
