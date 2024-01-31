@@ -34,18 +34,23 @@ func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx ech
 		// revalidation period has passed or not cached yet, render the component
 		if shouldRender {
 			println("[rendering-static-page]: " + path)
-			cache[path] = CachedComponent{
-				Component:    renderMethod(ctx),
-				RevalidateAt: timestamp + revalidate,
+			renderedComponent := renderMethod(ctx)
+			if renderedComponent != nil {
+				cache[path] = CachedComponent{
+					Component:    renderedComponent,
+					RevalidateAt: timestamp + revalidate,
+				}
+				template = cache[path].Component
+			} else {
+				return pages.Error("Render method did not return a component").Render(ctx.Request().Context(), ctx.Response())
 			}
-			template = cache[path].Component
 		} else {
 			println("[cached]: " + path)
 		}
 
 		err := template.Render(ctx.Request().Context(), ctx.Response())
 		if err != nil {
-			return pages.Error("Error getting data from the Pokemon API").Render(ctx.Request().Context(), ctx.Response())
+			return pages.Error("Error rendering component: "+err.Error()).Render(ctx.Request().Context(), ctx.Response())
 		}
 
 		return nil

@@ -23,7 +23,7 @@ func Templates(e *echo.Echo) {
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon", &result)
 
 		if err != nil {
-			return pages.Error("Error getting data from the Pokemon API")
+			return nil
 		}
 
 		return pages.Pokemon(result.Results)
@@ -34,7 +34,7 @@ func Templates(e *echo.Echo) {
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon/"+c.Param("name"), &result)
 
 		if err != nil {
-			return pages.Error("Error getting data from the Pokemon API")
+			return nil
 		}
 
 		return pages.PokemonSlug(result)

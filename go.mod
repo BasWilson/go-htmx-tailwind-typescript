@@ -7,6 +7,8 @@ require (
 	github.com/labstack/echo v3.3.10+incompatible
 )
 
+require github.com/samber/mo v1.11.0 // indirect
+
 require (
 	github.com/joho/godotenv v1.5.1
 	github.com/labstack/gommon v0.4.2 // indirect
