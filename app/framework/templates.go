@@ -1,10 +1,10 @@
 package framework
 
 import (
-	"baswilson/go-htmx-tailwind-typescript/app/templ/components"
-	"baswilson/go-htmx-tailwind-typescript/app/templ/pages"
-	"baswilson/go-htmx-tailwind-typescript/app/types"
-	"baswilson/go-htmx-tailwind-typescript/app/utils"
+	"go-htmx-tailwind-typescript/app/templ/components"
+	"go-htmx-tailwind-typescript/app/templ/pages"
+	"go-htmx-tailwind-typescript/app/types"
+	"go-htmx-tailwind-typescript/app/utils"
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo"
