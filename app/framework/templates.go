@@ -17,7 +17,7 @@ var Globals = map[string]interface{}{
 func Templates(e *echo.Echo) {
 	RegisterStaticComponent(e, "/", func(c echo.Context) templ.Component {
 		return pages.Index()
-	}, 60) // will revalidate after 60 seconds
+	}, 60, "GET") // will revalidate after 60 seconds
 
 	RegisterStaticComponent(e, "/pokemon", func(c echo.Context) templ.Component {
 		var result types.PokemonList
@@ -28,7 +28,7 @@ func Templates(e *echo.Echo) {
 		}
 
 		return pages.Pokemon(result.Results)
-	}, -1) // -1 means never revalidate
+	}, -1, "GET") // -1 means never revalidate
 
 	RegisterStaticComponent(e, "/pokemon/:name", func(c echo.Context) templ.Component {
 		var result types.Pokemon
@@ -39,10 +39,10 @@ func Templates(e *echo.Echo) {
 		}
 
 		return pages.PokemonSlug(result)
-	}, -1) // -1 means never revalidate
+	}, -1, "GET") // -1 means never revalidate
 
 	RegisterStaticComponent(e, "/clicked", func(c echo.Context) templ.Component {
 		Globals["Clicked"] = Globals["Clicked"].(int) + 1
 		return components.Clicked(Globals["Clicked"].(int))
-	}, 0) // 0 means revalidate on every request
+	}, 0, "POST") // 0 means revalidate on every request
 }

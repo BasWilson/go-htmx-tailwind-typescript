@@ -62,8 +62,7 @@ And then add the following to your settings.json:
 During development, open your network tab in your browser and disable caching. This will make sure that you always get the latest version of your files.
 
 ## Todo
-- [ ] Add a production build step
-- [ ] Add a production Dockerfile
+- [x] Add a production Dockerfile
 - [ ] Improve hot reloading
 - [ ] Write documentation how to use static wrapping
 - [ ] Write documentation how to deploy to edge workers
