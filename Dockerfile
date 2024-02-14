@@ -35,6 +35,7 @@ COPY --from=build-stage /app/public/out ./public/out
 
 # Build the Go app
 RUN templ generate
+RUN mkdir -p ./bin
 RUN go build -o ./bin ./app
 
 EXPOSE 3000
