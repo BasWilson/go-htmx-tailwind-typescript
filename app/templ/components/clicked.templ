@@ -3,5 +3,5 @@ package components
 import "strconv"
 
 templ Clicked(count int) {
-	<button hx-post="/clicked" hx-swap="outerHTML">Clicked { strconv.Itoa(count) } times</button>
+	<button hx-get="/clicked" hx-swap="outerHTML">Clicked { strconv.Itoa(count) } times</button>
 }
