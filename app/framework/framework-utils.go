@@ -1,6 +1,7 @@
 package framework
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -61,7 +62,7 @@ func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx ech
 func Load() (*echo.Echo, string) {
 	err := godotenv.Load()
 	if err != nil {
-		panic("Error loading .env file")
+		fmt.Println("Error loading .env file")
 	}
 
 	e := echo.New()
