@@ -1,4 +1,4 @@
-module github.com/baswilson/go-htmx-tailwind-typescript
+module baswilson/go-htmx-tailwind-typescript
 
 go 1.20
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/framework"
+	"baswilson/go-htmx-tailwind-typescript/app/framework"
 )
 
 func main() {

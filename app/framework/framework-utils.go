@@ -4,9 +4,10 @@ import (
 	"os"
 	"time"
 
+	"baswilson/go-htmx-tailwind-typescript/app/templ/pages"
+	"baswilson/go-htmx-tailwind-typescript/app/utils"
+
 	"github.com/a-h/templ"
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/templ/pages"
-	"github.com/baswilson/go-htmx-tailwind-typescript/app/utils"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 )
