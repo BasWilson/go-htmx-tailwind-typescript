@@ -38,6 +38,10 @@ RUN templ generate
 RUN mkdir -p ./bin
 RUN go build -o ./bin ./app
 
+# clean up source code (should leave us with just bin and public folders)
+RUN rm -rf ./app
+RUN find ./ -maxdepth 1 -type f -delete
+
 EXPOSE 3000
 
 CMD ["./bin/app"]
