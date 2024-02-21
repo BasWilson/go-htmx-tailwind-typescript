@@ -13,7 +13,7 @@ templ Pokemon(pokemon []types.Pokemon) {
 					<img src={ p.Sprites.FrontDefault }/>
 					<a href={ templ.SafeURL("/pokemon/" + p.Name) }>
 						@components.Button(components.Props{
-							Label: "Details",
+							Label: "View",
 						})
 					</a>
 				</div>

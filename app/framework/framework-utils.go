@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"go-htmx-tailwind-typescript/app/templ/pages"
-	"go-htmx-tailwind-typescript/app/utils"
 
 	"github.com/a-h/templ"
 	"github.com/joho/godotenv"
@@ -26,6 +25,7 @@ func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx ech
 		httpMethod = e.POST
 	}
 	httpMethod(url, func(ctx echo.Context) error {
+		startTime := time.Now()
 		path := ctx.Request().URL.Path
 		var template templ.Component
 		shouldRender := true
@@ -39,7 +39,7 @@ func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx ech
 
 		// revalidation period has passed or not cached yet, render the component
 		if shouldRender {
-			println("[rendering-static-page]: " + path)
+			println("[rendering-static-path]: " + path)
 			renderedComponent := renderMethod(ctx)
 			if renderedComponent != nil {
 				cache[path] = CachedComponent{
@@ -50,15 +50,13 @@ func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx ech
 			} else {
 				return pages.Error("Render method did not return a component").Render(ctx.Request().Context(), ctx.Response())
 			}
-		} else {
-			println("[cached]: " + path)
 		}
 
 		err := template.Render(ctx.Request().Context(), ctx.Response())
 		if err != nil {
 			return pages.Error("Error rendering component: "+err.Error()).Render(ctx.Request().Context(), ctx.Response())
 		}
-
+		println("[rendered]: " + path + " in " + time.Since(startTime).String())
 		return nil
 	})
 }
@@ -74,11 +72,8 @@ func Load() (*echo.Echo, string) {
 	e.Static("/", "public")
 
 	if os.Getenv("ENV") == "development" {
-		e.GET("/ws", utils.WsHotReload)
+		e.GET("/ws", WsHotReload)
 	}
-
-	Templates(e)
-	Api(e)
 
 	port := os.Getenv("PORT")
 	if port == "" {

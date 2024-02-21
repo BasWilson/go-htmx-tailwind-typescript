@@ -1,0 +1,11 @@
+{
+    "tailwindCSS.includeLanguages": {
+        "templ": "html"
+    },
+    "emmet.includeLanguages": {
+        "templ": "html"
+    },
+    "files.exclude": {
+        "**/*_templ.go": true,
+    }
+}

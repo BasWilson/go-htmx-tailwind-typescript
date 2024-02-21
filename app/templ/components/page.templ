@@ -9,6 +9,33 @@ templ Page(title string) {
 		</head>
 		<body>
 			{ children... }
+			<script>
+				let wasConnected = false;
+				let reconnectInterval;
+
+				const enableHotReload = () => {
+					const ws = new WebSocket("ws://localhost:1337/ws");
+					ws.onclose = () => {
+						reconnectInterval = setInterval(() => {
+							enableHotReload()
+						}, 100)
+					}
+					ws.onopen = () => {
+						if (reconnectInterval)
+							clearInterval(reconnectInterval)
+						if (wasConnected) {
+							console.log("Hot reloading")
+							window.location.reload();
+						} else {
+							console.log("Hot reload connected")
+							wasConnected = true;
+						}
+					}
+				}
+
+				if (window.location.hostname === 'localhost')
+					enableHotReload();
+			</script>
 		</body>
 	</html>
 }

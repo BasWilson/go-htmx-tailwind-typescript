@@ -1,4 +1,4 @@
-package framework
+package routes
 
 import (
 	"github.com/labstack/echo"
