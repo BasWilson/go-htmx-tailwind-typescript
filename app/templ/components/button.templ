@@ -1,11 +1,27 @@
 package components
 
-type Props struct {
-	Label string
-	Id    string
-	Class string
+import "go-htmx-tailwind-typescript/app/utils"
+
+type ButtonProps struct {
+	Label   string
+	Id      string
+	Class   string
+	Variant string
 }
 
-templ Button(props Props) {
-	<button id={ props.Id } class="px-4 bg-red-300 text-black rounded-sm py-2">{ props.Label }</button>
+var variantClassNames = map[string]string{
+	"color":    "bg-blue-500 hover:bg-blue-600",
+	"gray":     "bg-gray-300 hover:bg-gray-600",
+	"unstyled": "bg-transparent hover:bg-transparent",
+}
+
+func getVariantClassName(variant string) string {
+	if variant == "" {
+		return variantClassNames["color"]
+	}
+	return variantClassNames[variant]
+}
+
+templ Button(props ButtonProps) {
+	return <button id={ props.Id } class={ utils.CreateClassName("px-4 text-black py-2 rounded-lg", getVariantClassName(props.Variant), props.Class) }>{ props.Label }</button>
 }

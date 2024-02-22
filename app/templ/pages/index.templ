@@ -8,9 +8,10 @@ templ Index() {
 		<a href="/pokemon">/pokemon</a>
 		<div class="flex items-center gap-2">
 			<button hx-post="/clicked" hx-swap="outerHTML">Test HTMX</button>
-			@components.Button(components.Props{
-				Class: "",
-				Label: "Test Button Component",
+			@components.Button(components.ButtonProps{
+				Label:   "Test Button Component",
+				Id:      "test-id",
+				Variant: "colorful",
 			})
 		</div>
 	}

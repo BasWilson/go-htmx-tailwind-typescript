@@ -55,6 +55,9 @@ And then add the following to your settings.json:
 },
 "emmet.includeLanguages": {
     "templ": "html"
+},
+"files.exclude": {
+    "**/*_templ.go": true,
 }
 ```
 

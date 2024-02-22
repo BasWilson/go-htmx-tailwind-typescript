@@ -12,8 +12,9 @@ templ Pokemon(pokemon []types.Pokemon) {
 					<h2 class="text-xl text-gray-700">{ p.Name }</h2>
 					<img src={ p.Sprites.FrontDefault }/>
 					<a href={ templ.SafeURL("/pokemon/" + p.Name) }>
-						@components.Button(components.Props{
-							Label: "View",
+						@components.Button(components.ButtonProps{
+							Label:   "View",
+							Variant: "gray",
 						})
 					</a>
 				</div>
