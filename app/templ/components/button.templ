@@ -23,5 +23,5 @@ func getVariantClassName(variant string) string {
 }
 
 templ Button(props ButtonProps) {
-	return <button id={ props.Id } class={ utils.CreateClassName("px-4 text-black py-2 rounded-lg", getVariantClassName(props.Variant), props.Class) }>{ props.Label }</button>
+	<button id={ props.Id } class={ utils.CreateClassName("px-4 text-black py-2 rounded-lg", getVariantClassName(props.Variant), props.Class) }>{ props.Label }</button>
 }

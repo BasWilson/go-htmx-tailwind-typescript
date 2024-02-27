@@ -16,11 +16,11 @@ var Globals = map[string]interface{}{
 }
 
 func Pages(e *echo.Echo) {
-	framework.RegisterStaticComponent(e, "/", func(c echo.Context) templ.Component {
+	framework.RegisterComponent(e, "/", func(c echo.Context) templ.Component {
 		return pages.Index()
 	}, 60, "GET") // will revalidate after 60 seconds
 
-	framework.RegisterStaticComponent(e, "/pokemon", func(c echo.Context) templ.Component {
+	framework.RegisterComponent(e, "/pokemon", func(c echo.Context) templ.Component {
 		var result types.PokemonList
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon", &result)
 
@@ -31,7 +31,7 @@ func Pages(e *echo.Echo) {
 		return pages.Pokemon(result.Results)
 	}, -1, "GET") // -1 means never revalidate
 
-	framework.RegisterStaticComponent(e, "/pokemon/:name", func(c echo.Context) templ.Component {
+	framework.RegisterComponent(e, "/pokemon/:name", func(c echo.Context) templ.Component {
 		var result types.Pokemon
 		err := utils.Get("https://pokeapi.co/api/v2/pokemon/"+c.Param("name"), &result)
 
@@ -42,7 +42,7 @@ func Pages(e *echo.Echo) {
 		return pages.PokemonSlug(result)
 	}, -1, "GET") // -1 means never revalidate
 
-	framework.RegisterStaticComponent(e, "/clicked", func(c echo.Context) templ.Component {
+	framework.RegisterComponent(e, "/clicked", func(c echo.Context) templ.Component {
 		Globals["Clicked"] = Globals["Clicked"].(int) + 1
 		return components.Clicked(Globals["Clicked"].(int))
 	}, 0, "POST") // 0 means revalidate on every request

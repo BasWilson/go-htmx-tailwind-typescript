@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./public/css/index.css -o ./public/out/output.css",
-    "esbuild": "./node_modules/.bin/esbuild app/ts/main.ts --bundle --outfile=public/out/main.js"
+    "esbuild": "./node_modules/.bin/esbuild app/ts/* --bundle --outdir=public/out"
   },
   "author": "",
   "license": "ISC",

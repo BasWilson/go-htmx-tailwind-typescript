@@ -24,10 +24,8 @@ templ Page(title string) {
 						if (reconnectInterval)
 							clearInterval(reconnectInterval)
 						if (wasConnected) {
-							console.log("Hot reloading")
 							window.location.reload();
 						} else {
-							console.log("Hot reload connected")
 							wasConnected = true;
 						}
 					}

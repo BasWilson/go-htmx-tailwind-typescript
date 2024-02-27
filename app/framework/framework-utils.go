@@ -19,7 +19,7 @@ type CachedComponent struct {
 
 var cache = map[string]CachedComponent{}
 
-func RegisterStaticComponent(e *echo.Echo, url string, renderMethod func(ctx echo.Context) templ.Component, revalidate int64, method string) {
+func RegisterComponent(e *echo.Echo, url string, renderMethod func(ctx echo.Context) templ.Component, revalidate int64, method string) {
 	httpMethod := e.GET
 	if method == "POST" {
 		httpMethod = e.POST
